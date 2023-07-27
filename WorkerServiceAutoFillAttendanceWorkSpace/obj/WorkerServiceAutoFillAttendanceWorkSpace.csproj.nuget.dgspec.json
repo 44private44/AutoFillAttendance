@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj": {}
+    "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj": {}
   },
   "projects": {
-    "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj": {
+    "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
+        "projectUniqueName": "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
         "projectName": "WorkerServiceAutoFillAttendanceWorkSpace",
-        "projectPath": "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
+        "projectPath": "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
         "packagesPath": "C:\\Users\\pca172\\.nuget\\packages\\",
-        "outputPath": "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\obj\\",
+        "outputPath": "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

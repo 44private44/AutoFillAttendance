@@ -22,9 +22,10 @@ namespace WorkerServiceAutoFillAttendanceWorkSpace
             {
                 ChromeOptions options = new ChromeOptions();
                 options.AddArgument("--start-maximized"); // Open Chrome in maximized window
+                // options.AddArgument("--headless"); 
 
                 IWebDriver driver = new ChromeDriver(options);
-               
+
                 try
                 {
                     // go to url directly
@@ -91,7 +92,6 @@ namespace WorkerServiceAutoFillAttendanceWorkSpace
                     driver.Close();
                     string errorMessage = $"Error to Fill the attendance at: {DateTimeOffset.Now}\n";
                     File.AppendAllText(filePath, errorMessage);
-                    _logger.LogError(ex, "Error writing to file");
                 }
 
             }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GOgVx1zj6fS/Qtu303y9+/xcdQESmGFGUSPpTipSzjeSgWTi1LnkVDQpPKj+4juqjIe/pTl99ghaYNSoqpJzbA==",
+  "dgSpecHash": "7H7Qfm1JOkKABqRJTqINNtLWvEY+JoLZlrbhZPiJ5HIvl2KwDxx0il9l/k73JB3k0dx6qzCRarltWqhLfWylsw==",
   "success": true,
-  "projectFilePath": "D:\\important\\122\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
+  "projectFilePath": "D:\\important\\122\\Projects\\AutoFillAttendance\\WorkerServiceAutoFillAttendanceWorkSpace\\WorkerServiceAutoFillAttendanceWorkSpace.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pca172\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "C:\\Users\\pca172\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
