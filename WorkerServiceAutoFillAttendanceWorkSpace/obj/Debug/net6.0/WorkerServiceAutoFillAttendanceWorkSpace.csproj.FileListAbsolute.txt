@@ -107,3 +107,4 @@ D:\important\122\Projects\AutoFillAttendance\WorkerServiceAutoFillAttendanceWork
 D:\important\122\Projects\AutoFillAttendance\WorkerServiceAutoFillAttendanceWorkSpace\obj\Debug\net6.0\ref\WorkerServiceAutoFillAttendanceWorkSpace.dll
 D:\important\122\Projects\AutoFillAttendance\WorkerServiceAutoFillAttendanceWorkSpace\obj\Debug\net6.0\WorkerServiceAutoFillAttendanceWorkSpace.pdb
 D:\important\122\Projects\AutoFillAttendance\WorkerServiceAutoFillAttendanceWorkSpace\obj\Debug\net6.0\WorkerServiceAutoFillAttendanceWorkSpace.genruntimeconfig.cache
+D:\important\122\Projects\AutoFillAttendance\WorkerServiceAutoFillAttendanceWorkSpace\obj\Debug\net6.0\WorkerServiceAutoFillAttendanceWorkSpace.csproj.AssemblyReference.cache

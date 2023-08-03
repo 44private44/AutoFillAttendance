@@ -1,100 +1,56 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using YourWorkerServiceNamespace.Repositories;
 
 namespace WorkerServiceAutoFillAttendanceWorkSpace
 {
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
+        private readonly AttendanceRepository _attendanceRepository;
 
-        public Worker(ILogger<Worker> logger)
+        public Worker(ILogger<Worker> logger, AttendanceRepository attendanceRepository)
         {
+            _attendanceRepository = attendanceRepository;
             _logger = logger;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            string filePath = "D:\\important\\122\\Projects\\Attendance.txt";
-            int intervalSeconds = 20;
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                ChromeOptions options = new ChromeOptions();
-                options.AddArgument("--start-maximized"); // Open Chrome in maximized window
-                // options.AddArgument("--headless"); 
+                string filePath = "D:\\important\\122\\Projects\\Attendance.txt";
+                DateTime targetTime = DateTime.Today.AddHours(9).AddMinutes(30);
+                DateTime nextDayTargetTime = targetTime.AddDays(1);
 
-                IWebDriver driver = new ChromeDriver(options);
+                DateTime currentTime = DateTime.Now;
 
-                try
+                if (currentTime > targetTime)
                 {
-                    // go to url directly
-                    driver.Navigate().GoToUrl("https://web2.anasource.com/workspace");
+                    await _attendanceRepository.FillAttendance(filePath);
 
-                    // getting the input text and set to that in box
-                    IWebElement usernameField = driver.FindElement(By.Id("txtUserName"));
-                    IWebElement passwordField = driver.FindElement(By.Id("txtPassword"));
-
-                    string username = "Sohamkumar.Modi";
-                    string password = "$oh@m321";
-
-                    usernameField.SendKeys(username);
-                    passwordField.SendKeys(password);
-
-                    // login butn click
-                    IWebElement loginButton = driver.FindElement(By.Id("btnSave"));
-                    loginButton.Click();
-
-                    // my workspace tab click
-                    IWebElement myworkspaceTab = driver.FindElement(By.ClassName("ic18"));
-                    myworkspaceTab.Click();
-
-                    // attedance click tab
-                    IWebElement attendanceLink = driver.FindElement(By.CssSelector("a[data-menid='1344']"));
-                    attendanceLink.Click();
-
-                    // fetching the current date class
-                    IWebElement attendanceElement = driver.FindElement(By.CssSelector("td.calender-date-columns.CurrentDate"));
-                    string attendanceClass = attendanceElement.GetAttribute("class");
-
-                    // getting the currentdate class properties and after check 
-                    // Working days "initial-edit-div"
-                    if (attendanceClass.Contains("inline-edit-div"))
-                    {
-                        attendanceElement.Click();
-
-                        IWebElement dropdown = attendanceElement.FindElement(By.CssSelector("select.inline-select.status"));
-                        SelectElement select = new SelectElement(dropdown);
-                        select.SelectByValue("P");
-
-                        IWebElement saveButton = driver.FindElement(By.Id("btnSave"));
-                        saveButton.Click();
-                        string successMessage = $"Attendance fill at: {DateTimeOffset.Now}\n";
-                        File.AppendAllText(filePath, successMessage);
-                    }
-
-                    // saturday-sunday WeekOff
-                    else if (attendanceClass.Contains("WeekOff"))
-                    {
-                        string weekOffMessage = $"WeekOff: {DateTimeOffset.Now}\n";
-                        File.AppendAllText(filePath, weekOffMessage);
-                    }
-
-                    driver.Close();
-                    // Append the Attendance
-                    string updateMessage = $"Update Attendance : {DateTimeOffset.Now}\n";
-                    File.AppendAllText(filePath, updateMessage);
-
-                    await Task.Delay(TimeSpan.FromSeconds(intervalSeconds), stoppingToken);
+                    // It's already past the target time, so we'll wait until the next day's target time (9:30 AM)
+                    TimeSpan timeUntilNextTarget = nextDayTargetTime - currentTime;
+                    await Task.Delay(timeUntilNextTarget);
                 }
-                catch (Exception ex)
+                else
                 {
-                    driver.Close();
-                    string errorMessage = $"Error to Fill the attendance at: {DateTimeOffset.Now}\n";
-                    File.AppendAllText(filePath, errorMessage);
+                    // It's before the target time, so we'll wait until the target time (9:30 AM) of the current day
+                    TimeSpan timeUntilTarget = targetTime - currentTime;
+                    await Task.Delay(timeUntilTarget);
                 }
 
+                await _attendanceRepository.FillAttendance(filePath);
+
+                DateTime nextDay = DateTime.Today.AddDays(1);
+                DateTime nextDayTarget = nextDay.AddHours(9).AddMinutes(30);
+                TimeSpan timeUntilNextDayTarget = nextDayTarget - DateTime.Now;
+                await Task.Delay(timeUntilNextDayTarget);
             }
+
         }
+
     }
 }

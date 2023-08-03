@@ -1,8 +1,10 @@
 using WorkerServiceAutoFillAttendanceWorkSpace;
+using YourWorkerServiceNamespace.Repositories;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
+        services.AddSingleton<AttendanceRepository>();
         services.AddHostedService<Worker>();
     })
     .UseWindowsService(options =>
